@@ -1,9 +1,16 @@
+import {shuffle} from 'lodash';
+
 export default function(msg){
   if (msg.content.match(/^!losowanie/)) {
+    const [first, second] = msg.content.match(/"(.*?)"/g);
+    const firstShuffled = shuffle(first.replace(/\"/g, '').split(','));
+    const secondShuffled = shuffle(second.replace(/\"/g, '').split(','));
 
-    // const number = Number(msg.content.match(/\d+/)[0]) + 1;
-    // msg.reply(number + ' wygrałem!')
-    // msg.channel.send(msg.author)
+    let message = 'Wylosowano:'
+    firstShuffled.map((value,index) => {
+      message = message + '\n' + value.trim() + ' <=> ' + (secondShuffled[index] || '').trim()
+    })
+
+    msg.channel.send(message)
   }
 }
-a
