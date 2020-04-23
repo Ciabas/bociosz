@@ -1,4 +1,9 @@
 require('dotenv').config();
+require('http').createServer().listen(3000)
+
+import picipolo from './src/picipolo'
+import clear from './src/clear'
+
 var Discord = require('discord.js');
 var bot = new Discord.Client()
 
@@ -7,18 +12,8 @@ bot.on('ready', () => {
 });
 
 bot.on('message', function(msg) {
-  // if (msg.content.match(/\d+/) && msg.author !== 'Bociosz'){
-  //   var number = Number(msg.content.match(/\d+/)[0]) + 1;
-  //   msg.reply(number + ' wygrałem!')
-  // }
-  if (msg.content === '!author'){
-    msg.channel.send(msg.author)
-  }
-  if(msg.content === '!clear'){
-    msg.channel.bulkDelete(100)
-  }
-  if (msg.content === '!losuj-na-vasta') {
-    msg.channel.send('WlQ - goblin; Gwiazda - rycerz; Ciabas - złodziej, Doktor Profesor Tadeusz Zybert - jaskinia, Witalis - smok, wyniki zapisane')
-  }
+  picipolo(msg)
+  clear(msg)
 })
+
 bot.login(process.env.DISCORD_TOKEN);
