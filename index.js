@@ -1,5 +1,4 @@
 require('dotenv').config();
-require('http').createServer().listen(3000)
 
 import picipolo from './src/picipolo';
 import clear from './src/clear';
