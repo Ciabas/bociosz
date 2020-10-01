@@ -19,7 +19,6 @@ var _losowanie2 = _interopRequireDefault(_losowanie);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 require('dotenv').config();
-require('http').createServer().listen(3000);
 
 var Discord = require('discord.js');
 var bot = new Discord.Client();
@@ -36,3 +35,8 @@ bot.on('message', function (msg) {
 });
 
 bot.login(process.env.DISCORD_TOKEN);
+
+var PORT = process.env.PORT || 3000;
+server.listen(PORT, function () {
+  console.log('Our app is running on port ' + PORT);
+});
