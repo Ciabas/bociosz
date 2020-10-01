@@ -4,6 +4,7 @@ import picipolo from './src/picipolo';
 import clear from './src/clear';
 import roll from './src/roll';
 import losowanie from './src/losowanie';
+import bociosz from './src/bociosz';
 
 var Discord = require('discord.js');
 var bot = new Discord.Client()
@@ -17,6 +18,7 @@ bot.on('message', function(msg) {
   clear(msg)
   roll(msg)
   losowanie(msg)
+  bociosz(msg)
 })
 
 bot.login(process.env.DISCORD_TOKEN);
