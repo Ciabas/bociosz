@@ -36,7 +36,7 @@ bot.on('message', function (msg) {
 
 bot.login(process.env.DISCORD_TOKEN);
 
-var PORT = process.env.PORT || 3000;
-server.listen(PORT, function () {
-  console.log('Our app is running on port ' + PORT);
-});
+// const PORT = process.env.PORT || 3000;
+// server.listen(PORT, () => {
+//   console.log(`Our app is running on port ${PORT}`);
+// });
