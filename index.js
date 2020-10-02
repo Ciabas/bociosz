@@ -21,9 +21,9 @@ bot.once('disconnect', () => {
 });
 
 bot.on('message', function(msg) {
-  if (!message.content.startsWith('!')) return;
-  if (message.author.bot) return;
+  if (msg.author.bot) return;
   picipolo(msg)
+  if (!msg.content.startsWith('!')) return;
   clear(msg)
   roll(msg)
   losowanie(msg)

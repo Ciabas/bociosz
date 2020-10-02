@@ -1,7 +1,8 @@
-import {shuffle} from 'lodash';
+import { shuffle } from 'lodash';
+import { prefix } from './common';
 
 export default function(msg){
-  if (msg.content.match(/^!losowanie/)) {
+  if (msg.content.startsWith(`${prefix}losowanie`)) {
     const [first, second] = msg.content.match(/"(.*?)"/g);
     const firstShuffled = shuffle(first.replace(/\"/g, '').split(','));
     const secondShuffled = shuffle(second.replace(/\"/g, '').split(','));

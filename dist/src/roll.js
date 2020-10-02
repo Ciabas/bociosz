@@ -11,3 +11,5 @@ exports.default = function (msg) {
     msg.channel.send('Wylosowano: ' + roll);
   }
 };
+
+var _common = require('./common');
