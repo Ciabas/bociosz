@@ -6,13 +6,12 @@ export default function (message){
 
   if (message.content.startsWith(`${prefix}play`)) {
     execute(message, queue);
-    return;
-  } else if (message.content.startsWith(`${prefix}skip`)) {
+  }
+  if (message.content.startsWith(`${prefix}skip`)) {
     skip(message, queue);
-    return;
-  } else if (message.content.startsWith(`${prefix}stop`)) {
+  }
+  if (message.content.startsWith(`${prefix}stop`)) {
     stop(message, queue);
-    return;
   }
 }
 
