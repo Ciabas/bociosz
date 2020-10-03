@@ -31,4 +31,4 @@ bot.on('message', function(msg) {
   music(msg)
 })
 
-// bot.login(process.env.DISCORD_TOKEN);
+bot.login(process.env.DISCORD_TOKEN);
