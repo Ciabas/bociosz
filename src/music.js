@@ -1,13 +1,13 @@
 import ytdl from 'ytdl-core';
 import { prefix } from './common';
 import ytsr from 'ytsr';
-
+import axios from 'axios';
 export default function (message){
   const controlPanel = createControlPanel(message);
 
   if (message.content.startsWith(`${prefix}play`)) {
     setConnection(controlPanel);
-    addSong(controlPanel)
+    searchAndPlaySong(controlPanel)
   }
   if (message.content.startsWith(`${prefix}skip`)) {
     skip(controlPanel);
@@ -106,14 +106,26 @@ function stop(controlPanel) {
   }
 }
 
-async function addSong(controlPanel){
+async function searchAndPlaySong(controlPanel){
   const message = controlPanel.getMessage()
   const songName = message.content.split(" ").slice(1).join(" ");
 
-  const songId = await ytsr(songName).then(r => {
-    const { link } = r.items[0]
-    return ytdl.getVideoID(link)
-  }).catch (err => controlPanel.sendMessage(`Can not find the song, ${err}`))
+  const searchInYouTube = () =>
+    ytsr(songName).then(r => {
+      const { link } = r.items[0]
+      return ytdl.getVideoID(link)
+    })
+
+  const getFromGaleria = () =>
+    axios.get('https://galeria.brodapp.pl/api/v1/songs/random_song').then(response =>
+      response.data.song_id
+    )
+
+  const songId = await (['losowe', 'losowo', 'cos', 'random'].includes(songName)
+    ? getFromGaleria()
+    : searchInYouTube()
+  ).catch(err => controlPanel.sendMessage(`Can not find the song, ${err}`))
+
 
   const songInfo = await ytdl.getInfo(songId);
   const song = {
@@ -122,7 +134,7 @@ async function addSong(controlPanel){
   };
 
   controlPanel.addSong(song)
-  playSong(controlPanel.getSong(), controlPanel);
+  return playSong(controlPanel.shiftFirstSong(), controlPanel);
 }
 
 function playSong(song, controlPanel) {
@@ -134,10 +146,7 @@ function playSong(song, controlPanel) {
 
   const dispatcher = controlPanel.getConnection()
     .play(ytdl(song.url, { quality: 'highestaudio', liveBuffer: 2000 }))
-    .on("finish", () => {
-      controlPanel.shiftFirstSong();
-      play(controlPanel.getSong(), controlPanel);
-    })
+    .on("finish", () => play(controlPanel.getSong(), controlPanel))
     .on("error", error => console.error(error));
   dispatcher.setVolumeLogarithmic(controlPanel.getVolume() / 5);
   controlPanel.sendMessage(`Start playing: **${song.title}**`);
