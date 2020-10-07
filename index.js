@@ -24,7 +24,7 @@ bot.once('disconnect', () => {
 bot.on('message', function(msg) {
   if (msg.author.bot) return;
   picipolo(msg)
-  quiz(msg)
+  // quiz(msg)
   if (!msg.content.startsWith('!')) return;
   clear(msg)
   roll(msg)

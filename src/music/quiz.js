@@ -1,7 +1,8 @@
 import quizSongs from './quizSongs.json'
 import { shuffle } from 'lodash'
 import play from './play'
-import { createControlPanel } from './music'
+import { createControlPanel, setConnection } from './actions'
+import { prefix } from '../common';
 
 export default function (message) {
   const controlPanel = createControlPanel(message);
@@ -22,14 +23,14 @@ function quizStart(controlPanel){
 }
 
 function calculate(message, controlPanel){
-  // const currentSong = controlPanel.getSong();
+  const currentSong = controlPanel.getSong();
 
-  // if(message === currentSong.name){
-  //   controlPanel.send('Dobra nazwa')
-  // }
+  if(message === currentSong.name){
+    controlPanel.send('Dobra nazwa')
+  }
 
-  // if(message === currentSong.artist){
-  //   controlPanel.send('Dobry artysta')
-  // }
+  if(message === currentSong.artist){
+    controlPanel.send('Dobry artysta')
+  }
 
 }
