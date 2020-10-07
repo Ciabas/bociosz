@@ -3,6 +3,8 @@ import { prefix } from '../common';
 import skip from './skip'
 import play from './play'
 import stop from './stop'
+import quiz from './quiz'
+
 
 export default function (message){
   const controlPanel = createControlPanel(message);
@@ -16,6 +18,9 @@ export default function (message){
   }
   if (message.content.startsWith(`${prefix}stop`)) {
     stop(controlPanel);
+  }
+  if (message.content.startsWith(`${prefix}quiz`)) {
+    quiz(controlPanel);
   }
 }
 
