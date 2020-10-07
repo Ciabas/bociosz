@@ -8,7 +8,6 @@
   },
   "dependencies": {
     "@discordjs/opus": "^0.3.2",
-    "axios": "^0.20.0",
     "babel-cli": "^6.26.0",
     "babel-preset-es2015": "^6.24.1",
     "discord.js": "^12.0.1",

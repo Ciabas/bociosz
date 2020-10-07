@@ -1,6 +1,5 @@
 import ytdl from 'ytdl-core';
 import ytsr from 'ytsr';
-// import axios from 'axios';
 import quizSongs from './quizSongs.json'
 import { sample } from 'lodash'
 
@@ -14,12 +13,7 @@ export default async function searchAndPlaySong(controlPanel) {
       return ytdl.getVideoID(link)
     })
 
-  // const getFromGaleria = () =>
-  //   axios.get('https://galeria.brodapp.pl/api/v1/songs/random_song').then(response =>
-  //     response.data.song_id
-  //   )
-
-  const getRandom = () =>{
+  const getRandom = () => {
     const  randomSong = sample(quizSongs)
     return ytsr(`${randomSong.artist} ${randomSong.name}`).then(r => {
       const { link } = r.items[0]
