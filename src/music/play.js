@@ -4,9 +4,10 @@ import quizSongs from './quizSongs.json'
 import { sample } from 'lodash'
 
 export default async function searchAndPlaySong(songName, controlPanel) {
+
   const songId = await (['losowe', 'losowo', 'cos', 'random', 'radom'].includes(songName)
     ? getRandom()
-    : searchInYouTube()
+    : searchInYouTube(songName)
   ).catch(err => controlPanel.sendMessage(`Can not find the song, ${err}`))
 
   if (!songId){
@@ -33,16 +34,13 @@ function playSong(song, controlPanel) {
 
   const dispatcher = controlPanel.getConnection()
     .play(ytdl(song.url, { quality: 'highestaudio', liveBuffer: 2000 }))
-    .on("finish", () => {
-      const s = controlPanel.shiftFirstSong()
-      return playSong(s, controlPanel)
-    })
+    .on("finish", () => playSong(controlPanel.shiftFirstSong(), controlPanel))
     .on("error", error => console.error(error));
   dispatcher.setVolumeLogarithmic(controlPanel.getVolume() / 5);
   controlPanel.sendMessage(`Start playing: **${song.title}**`);
 }
 
-export const searchInYouTube = () =>
+export const searchInYouTube = (songName) =>
   ytsr(songName).then(r => {
     const { link } = r.items[0]
     return ytdl.getVideoID(link)

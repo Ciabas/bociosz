@@ -3,7 +3,6 @@ import { prefix } from '../common';
 import skip from './skip'
 import play from './play'
 import stop from './stop'
-import quiz from './quiz'
 
 export default function (message){
   const controlPanel = createControlPanel(message);
@@ -11,6 +10,7 @@ export default function (message){
   if (message.content.startsWith(`${prefix}play`)) {
     const message = controlPanel.getMessage()
     const songName = message.content.split(" ").slice(1).join(" ");
+
     setConnection(controlPanel);
     play(songName, controlPanel)
   }
@@ -20,15 +20,9 @@ export default function (message){
   if (message.content.startsWith(`${prefix}stop`)) {
     stop(controlPanel);
   }
-  if (message.content.startsWith(`${prefix}quiz`)) {
-    setConnection(controlPanel);
-    controlPanel.resetSongs()
-    controlPanel.resetState()
-    quiz(controlPanel);
-  }
 }
 
-const createControlPanel = (message) =>{
+export const createControlPanel = (message) =>{
   const createControlPanelConstruct = () => ({
     textChannel: message.channel,
     voiceChannel: null,
