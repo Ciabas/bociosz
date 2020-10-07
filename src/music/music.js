@@ -20,6 +20,8 @@ export default function (message){
     stop(controlPanel);
   }
   if (message.content.startsWith(`${prefix}quiz`)) {
+    setConnection(controlPanel);
+    controlPanel.resetSongs()
     quiz(controlPanel);
   }
 }
