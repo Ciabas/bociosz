@@ -5,7 +5,7 @@ import clear from './src/clear';
 import roll from './src/roll';
 import losowanie from './src/losowanie';
 import bociosz from './src/bociosz';
-import music from './src/music';
+import music from './src/music/music';
 
 var Discord = require('discord.js');
 var bot = new Discord.Client()

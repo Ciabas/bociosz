@@ -17,8 +17,11 @@
     "fluent-ffmpeg": "^2.1.2",
     "fs-sync": "^1.0.6",
     "lodash": "^4.17.15",
-    "mongodb": "^3.5.7",
     "ytdl-core": "^3.3.0",
     "ytsr": "^1.0.3"
+  },
+  "devDependencies": {
+    "mongodb": "^3.5.7",
+    "node-fetch": "^2.6.1"
   }
 }

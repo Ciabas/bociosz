@@ -1,13 +1,15 @@
-import ytdl from 'ytdl-core';
-import { prefix } from './common';
-import ytsr from 'ytsr';
-import axios from 'axios';
+
+import { prefix } from '../common';
+import skip from './skip'
+import play from './play'
+import stop from './stop'
+
 export default function (message){
   const controlPanel = createControlPanel(message);
 
   if (message.content.startsWith(`${prefix}play`)) {
     setConnection(controlPanel);
-    searchAndPlaySong(controlPanel)
+    play(controlPanel)
   }
   if (message.content.startsWith(`${prefix}skip`)) {
     skip(controlPanel);
@@ -81,73 +83,4 @@ async function setConnection(controlPanel) {
   } else {
     return controlPanel.sendMessage("No connection, try again later.");
   }
-}
-
-function skip(controlPanel) {
-  if (!controlPanel.isConnectedToVoiceChannel())
-    return controlPanel.sendMessage(
-      "You have to be in a voice channel to stop the music!"
-    );
-  if (controlPanel.getConnection()) {
-    return controlPanel.endDispatcher()
-  }
-  return controlPanel.sendMessage("There is no song that I could skip!");
-}
-
-function stop(controlPanel) {
-  if (!controlPanel.isConnectedToVoiceChannel()) {
-    return controlPanel.sendMessage(
-      "You have to be in a voice channel to stop the music!"
-    );
-  }
-  controlPanel.resetSongs();
-  if (controlPanel.getConnection()) {
-    controlPanel.endDispatcher();
-  }
-}
-
-async function searchAndPlaySong(controlPanel){
-  const message = controlPanel.getMessage()
-  const songName = message.content.split(" ").slice(1).join(" ");
-
-  const searchInYouTube = () =>
-    ytsr(songName).then(r => {
-      const { link } = r.items[0]
-      return ytdl.getVideoID(link)
-    })
-
-  const getFromGaleria = () =>
-    axios.get('https://galeria.brodapp.pl/api/v1/songs/random_song').then(response =>
-      response.data.song_id
-    )
-
-  const songId = await (['losowe', 'losowo', 'cos', 'random'].includes(songName)
-    ? getFromGaleria()
-    : searchInYouTube()
-  ).catch(err => controlPanel.sendMessage(`Can not find the song, ${err}`))
-
-
-  const songInfo = await ytdl.getInfo(songId);
-  const song = {
-    title: songInfo.videoDetails.title,
-    url: songInfo.videoDetails.video_url
-  };
-
-  controlPanel.addSong(song)
-  return playSong(controlPanel.shiftFirstSong(), controlPanel);
-}
-
-function playSong(song, controlPanel) {
-  if (!song) {
-    controlPanel.leaveVoiceChannel();
-    controlPanel.resetState();
-    return;
-  }
-
-  const dispatcher = controlPanel.getConnection()
-    .play(ytdl(song.url, { quality: 'highestaudio', liveBuffer: 2000 }))
-    .on("finish", () => play(controlPanel.getSong(), controlPanel))
-    .on("error", error => console.error(error));
-  dispatcher.setVolumeLogarithmic(controlPanel.getVolume() / 5);
-  controlPanel.sendMessage(`Start playing: **${song.title}**`);
 }
