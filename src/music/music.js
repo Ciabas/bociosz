@@ -5,7 +5,6 @@ import play from './play'
 import stop from './stop'
 import quiz from './quiz'
 
-
 export default function (message){
   const controlPanel = createControlPanel(message);
 
@@ -22,6 +21,7 @@ export default function (message){
   if (message.content.startsWith(`${prefix}quiz`)) {
     setConnection(controlPanel);
     controlPanel.resetSongs()
+    controlPanel.resetState()
     quiz(controlPanel);
   }
 }

@@ -5,6 +5,7 @@ export default function stop(controlPanel) {
     );
   }
   controlPanel.resetSongs();
+  controlPanel.resetState();
   if (controlPanel.getConnection()) {
     controlPanel.endDispatcher();
   }
