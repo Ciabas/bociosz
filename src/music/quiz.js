@@ -22,14 +22,14 @@ function quizStart(controlPanel){
 }
 
 function calculate(message, controlPanel){
-  const currentSong = controlPanel.getSong();
+  // const currentSong = controlPanel.getSong();
 
-  if(message === currentSong.name){
-    controlPanel.send('Dobra nazwa')
-  }
+  // if(message === currentSong.name){
+  //   controlPanel.send('Dobra nazwa')
+  // }
 
-  if(message === currentSong.artist){
-    controlPanel.send('Dobry artysta')
-  }
+  // if(message === currentSong.artist){
+  //   controlPanel.send('Dobry artysta')
+  // }
 
 }
