@@ -36,7 +36,10 @@ function playSong(song, controlPanel) {
 
   const dispatcher = controlPanel.getConnection()
     .play(ytdl(song.url, { quality: 'highestaudio', liveBuffer: 2000 }))
-    .on("finish", () => play(controlPanel.getSong(), controlPanel))
+    .on("finish", () => {
+      const s = controlPanel.shiftFirstSong()
+      return playSong(s, controlPanel)
+    })
     .on("error", error => console.error(error));
   dispatcher.setVolumeLogarithmic(controlPanel.getVolume() / 5);
   controlPanel.sendMessage(`Start playing: **${song.title}**`);
