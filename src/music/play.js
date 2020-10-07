@@ -3,10 +3,7 @@ import ytsr from 'ytsr';
 import quizSongs from './quizSongs.json'
 import { sample } from 'lodash'
 
-export default async function searchAndPlaySong(controlPanel) {
-  const message = controlPanel.getMessage()
-  const songName = message.content.split(" ").slice(1).join(" ");
-
+export default async function searchAndPlaySong(songName, controlPanel) {
   const songId = await (['losowe', 'losowo', 'cos', 'random', 'radom'].includes(songName)
     ? getRandom()
     : searchInYouTube()
