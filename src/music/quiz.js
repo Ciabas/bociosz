@@ -25,6 +25,10 @@ function quizStart(controlPanel){
 function calculate(message, controlPanel){
   const currentSong = controlPanel.getSong();
 
+  if (!currentSong){
+    return;
+  }
+
   if(message === currentSong.name){
     controlPanel.send('Dobra nazwa')
   }

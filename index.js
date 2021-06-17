@@ -1,12 +1,14 @@
 require('dotenv').config();
 
 import picipolo from './src/picipolo';
-import clear from './src/clear';
+// import clear from './src/clear';
 import roll from './src/roll';
 import losowanie from './src/losowanie';
 import bociosz from './src/bociosz';
 import music from './src/music/music';
 import quiz from './src/music/quiz';
+import vote from './src/vote';
+import custom from './src/custom';
 
 var Discord = require('discord.js');
 var bot = new Discord.Client()
@@ -21,16 +23,18 @@ bot.once('disconnect', () => {
   console.log('Disconnect!');
 });
 
-bot.on('message', function(msg) {
+bot.on('message', msg => {
   if (msg.author.bot) return;
   picipolo(msg)
   // quiz(msg)
   if (!msg.content.startsWith('!')) return;
-  clear(msg)
+  // clear(msg)
   roll(msg)
   losowanie(msg)
   bociosz(msg)
   music(msg)
+  vote(msg)
+  custom(msg)
 })
 
 bot.login(process.env.DISCORD_TOKEN);

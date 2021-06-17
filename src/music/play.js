@@ -8,13 +8,17 @@ export default async function searchAndPlaySong(songName, controlPanel) {
   const songId = await (['losowe', 'losowo', 'cos', 'random', 'radom'].includes(songName)
     ? getRandom()
     : searchInYouTube(songName)
-  ).catch(err => controlPanel.sendMessage(`Can not find the song, ${err}`))
+  ).catch(err => {
+    controlPanel.sendMessage(`Can not find the song, ${err}`);
+  throw Error(`Can not find the song, ${err}`)
+  })
 
   if (!songId){
     return
   }
 
   return ytdl.getInfo(songId).then(songInfo => {
+    // TODO: tu jest problem?
     const song = {
       title: songInfo.videoDetails.title,
       url: songInfo.videoDetails.video_url
