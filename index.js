@@ -34,7 +34,7 @@ bot.on('message', msg => {
   bociosz(msg)
   music(msg)
   vote(msg)
-  custom(msg)
+  // custom(msg)
 })
 
 bot.login(process.env.DISCORD_TOKEN);
