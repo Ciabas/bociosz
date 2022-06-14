@@ -11,8 +11,8 @@ import custom from "./src/custom.js";
 import Discord from './libs/discordeno.ts'
 
 // export PATH = "/Users/arturwroblewski/.deno/bin:$PATH"
-
-
+// https://web-mystery.com/articles/making-discord-bot-deno-and-discordeno
+// https://dev.to/aralroca/from-node-to-deno-5gpn
 Discord.startBot({
   token: Deno.env.get('DISCORD_TOKEN'),
   intents: ["Guilds", "GuildMessages"],
