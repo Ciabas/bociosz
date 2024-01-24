@@ -1,4 +1,3 @@
-
 export const createControlPanel = (message) => {
   const createControlPanelConstruct = () => ({
     textChannel: message.channel,
@@ -6,32 +5,34 @@ export const createControlPanel = (message) => {
     connection: null,
     songs: [],
     volume: 5,
-    playing: true
+    playing: true,
   });
 
-  let controlPanelContruct = createControlPanelConstruct()
+  let controlPanelContruct = createControlPanelConstruct();
 
   return {
     getMessage: () => message,
     getVolume: () => controlPanelContruct.volume,
     getConnection: () => controlPanelContruct.connection,
-    setConnection: (connection) => controlPanelContruct.connection = connection,
-    setVoiceChannel: (voiceChannel) => controlPanelContruct.voiceChannel = voiceChannel,
+    setConnection: (connection) =>
+      (controlPanelContruct.connection = connection),
+    setVoiceChannel: (voiceChannel) =>
+      (controlPanelContruct.voiceChannel = voiceChannel),
     leaveVoiceChannel: () => controlPanelContruct.voiceChannel.leave(),
-    resetState: () => controlPanelContruct = createControlPanelConstruct(),
+    resetState: () => (controlPanelContruct = createControlPanelConstruct()),
     addSong: (song) => controlPanelContruct.songs.push(song),
     removeSong: (song) => controlPanelContruct.songs.push(song),
     getSong: (index = 0) => controlPanelContruct.songs[index],
     endDispatcher: () => controlPanelContruct.connection.dispatcher.end(),
-    resetSongs: () => controlPanelContruct.songs = [],
+    resetSongs: () => (controlPanelContruct.songs = []),
     shiftFirstSong: () => controlPanelContruct.songs.shift(),
     sendMessage: (msg) => controlPanelContruct.textChannel.send(msg),
     isConnectedToVoiceChannel: () => message.member.voice.channel,
-  }
-}
+  };
+};
 
 export async function setConnection(controlPanel) {
-  const message = controlPanel.getMessage()
+  const message = controlPanel.getMessage();
 
   const voiceChannel = message.member.voice.channel;
   if (!voiceChannel) {
@@ -47,14 +48,14 @@ export async function setConnection(controlPanel) {
   }
 
   if (!controlPanel.getConnection()) {
-    controlPanel.setVoiceChannel(voiceChannel)
+    controlPanel.setVoiceChannel(voiceChannel);
 
     try {
       const connection = await voiceChannel.join();
       controlPanel.setConnection(connection);
     } catch (err) {
       console.log(err);
-      controlPanel.leaveVoiceChannel()
+      controlPanel.leaveVoiceChannel();
       controlPanel.resetState();
       if (err) {
         controlPanel.sendMessage(`Error: ${err}`);

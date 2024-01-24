@@ -1,4 +1,4 @@
-import { prefix } from './common';
+import { prefix } from "./common.js";
 
 export default function (msg) {
   if (msg.content.startsWith(`${prefix}bociosz`)) {
@@ -10,6 +10,6 @@ export default function (msg) {
     • ${prefix}losowanie "adam, ewa, wonsz" - losuje z listy jedną wartość,
     • ${prefix}losowanie "ciastko, kawa" "adam, ewa" - dopasowuje elementy list do siebie,
     • ${prefix}play x - bociosz wbija na kanał głosowy i gra, "x" to ID video z youtube,
-    `)
+    `);
   }
 }

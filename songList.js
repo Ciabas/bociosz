@@ -89,7 +89,10 @@ export default [
   { spotifyId: "4oXP6haPK2dorhIBHvBgKU?si=gY6axZuZScSfaUe2PXGfCg" },
   { spotifyId: "4W4wYHtsrgDiivRASVOINL" },
   { spotifyId: "1orVKbp6vqtfAPOmvRofVq?si=LgQkVQ3WRJCfaasIm1pqvA" },
-  { spotifyId: "0Y4hwUppbGc8aIBmiTz30A?context=spotify%3Auser%3Aspotify%3Aplaylist%3A37i9dQZF1DX10zKzsJ2jva&si=A508BoKGTpKwZj0XVvVwPA" },
+  {
+    spotifyId:
+      "0Y4hwUppbGc8aIBmiTz30A?context=spotify%3Auser%3Aspotify%3Aplaylist%3A37i9dQZF1DX10zKzsJ2jva&si=A508BoKGTpKwZj0XVvVwPA",
+  },
   { spotifyId: "6KuqAtoeVzxAYOaMveLNpH?si=akY6-El-SI-pGw9VWNvDMg" },
   { spotifyId: "5XMjXjwCkJVmk0AHm7z8IV?si=_IQZNLf8SZqaFMqR-P8MXQ" },
   { spotifyId: "4wTpXpDSlOv6SUUUf0DnCn" },
@@ -108,7 +111,10 @@ export default [
   { spotifyId: "1Hpa5UagE5gp5gLzgFjkzX?si=fq0GOYHeSveCv_1BJwMXzQ" },
   { spotifyId: "4QtiVmuA88tPQiCOHZuQ5b?si=rI5-kIXMQNW5fOIS2hmlgg" },
   { spotifyId: "33064BqXHOJyZXq0nEEqWA?si=kD7JxNdySjSCKC9QDiCuEQ" },
-  { spotifyId: "5CLGzJsGqhCEECcpnFQA8x?context=spotify%3Auser%3Aspotify%3Aplaylist%3A37i9dQZF1DX4WYpdgoIcn6&si=7vSjm3EVQLmJzLPE2jPP3w" },
+  {
+    spotifyId:
+      "5CLGzJsGqhCEECcpnFQA8x?context=spotify%3Auser%3Aspotify%3Aplaylist%3A37i9dQZF1DX4WYpdgoIcn6&si=7vSjm3EVQLmJzLPE2jPP3w",
+  },
   { spotifyId: "2DFi8rwHcVkTTgu7PULhtI?si=JZd0k8JHTouO6gUvBHioMA" },
   { spotifyId: "3HVRywtkhSjhpmkaeaYTgh?si=8DhL3iJESB6Dlaad5cLZ9Q" },
   { spotifyId: "6vZdRrueM9ZEJjx6EWe1XQ?si=4UB9mY1gRWKbsPml1kfXhQ" },
@@ -322,11 +328,26 @@ export default [
   { spotifyId: "1VkNLfYxoS7Uc80xvt1xBK" },
   { spotifyId: "1Rvl8qsKJurfFTyWLBI9ib" },
   { spotifyId: "2SWn864dJI5RNyrp3F4Kp1" },
-  { spotifyId: "03YoRDLmG333y0ORu2D5A4?context=spotify%3Auser%3Aspotify%3Aplaylist%3A37i9dQZF1DXcF6B6QPhFDv" },
-  { spotifyId: "6tNQw4RAj7oYogHXVzKJg8?context=spotify%3Auser%3Aspotify%3Aplaylist%3A37i9dQZF1DXcF6B6QPhFDv" },
-  { spotifyId: "2DptK8PS4fOEkbSyrUuUQp?context=spotify%3Auser%3Aspotify%3Aplaylist%3A37i9dQZF1DXcF6B6QPhFDv" },
-  { spotifyId: "6PtIXICwmoxCgLjw2zApDs?context=spotify%3Auser%3Aspotify%3Aplaylist%3A37i9dQZF1DXcF6B6QPhFDv" },
-  { spotifyId: "1mU8A0bKStnhYuS043o6Je?context=spotify%3Auser%3Aspotify%3Aplaylist%3A37i9dQZF1DXcF6B6QPhFDv" },
+  {
+    spotifyId:
+      "03YoRDLmG333y0ORu2D5A4?context=spotify%3Auser%3Aspotify%3Aplaylist%3A37i9dQZF1DXcF6B6QPhFDv",
+  },
+  {
+    spotifyId:
+      "6tNQw4RAj7oYogHXVzKJg8?context=spotify%3Auser%3Aspotify%3Aplaylist%3A37i9dQZF1DXcF6B6QPhFDv",
+  },
+  {
+    spotifyId:
+      "2DptK8PS4fOEkbSyrUuUQp?context=spotify%3Auser%3Aspotify%3Aplaylist%3A37i9dQZF1DXcF6B6QPhFDv",
+  },
+  {
+    spotifyId:
+      "6PtIXICwmoxCgLjw2zApDs?context=spotify%3Auser%3Aspotify%3Aplaylist%3A37i9dQZF1DXcF6B6QPhFDv",
+  },
+  {
+    spotifyId:
+      "1mU8A0bKStnhYuS043o6Je?context=spotify%3Auser%3Aspotify%3Aplaylist%3A37i9dQZF1DXcF6B6QPhFDv",
+  },
   { spotifyId: "53ZXs7UAqaodQHi4pz7NHR" },
   { spotifyId: "7qboThq6AiQBDDq2wCj578" },
   { spotifyId: "2ds9vlk6o6BRCc2FAkmOvX" },
@@ -1313,4 +1334,4 @@ export default [
   { spotifyId: "0pJjOpW8nBErTvQgyLvDMG" },
   { spotifyId: "4sAPyrIRUVKCax5d1bt96D" },
   { spotifyId: "2uWK6uBDfyg78xfiH1iiFP" },
-]
+];

@@ -1,0 +1,28 @@
+{
+  "lint": {
+    "rules": {
+      "tags": ["recommended"]
+    }
+  },
+  "fmt": {
+    "useTabs": true,
+    "lineWidth": 120,
+    "indentWidth": 4,
+    "semiColons": true,
+    "singleQuote": true,
+    "proseWrap": "preserve",
+    "include": ["src/"]
+  },
+  "tasks": {
+    "dev": "deno run --allow-net --allow-read --allow-env index.js"
+  },
+  "imports": {
+    "/": "./",
+    "./": "./",
+    "lodash": "npm:lodash-es@^4.17",
+    "discord.js": "npm:discord.js@^12.0.1",
+    "dotenv": "npm:dotenv@^8.2.0",
+    "ytdl-core": "npm:ytdl-core@^3.3.0",
+    "ytsr": "npm:ytsr@^1.0.3"
+  }
+}
